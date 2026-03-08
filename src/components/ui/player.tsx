@@ -1,18 +1,46 @@
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Card } from "./card";
 import { LuPause, LuPlay, LuVolumeX, LuVolume2 } from "react-icons/lu";
 import { AnimatePresence, motion } from "framer-motion";
+import { SITE } from "@/consts";
 
 interface PlayerProps {
   className?: string;
 }
 
 export const Player = (props: PlayerProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
 
-  const togglePlay = () => setIsPlaying((prev) => !prev);
-  const toggleMute = () => setIsMuted((prev) => !prev);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    setAudio(new Audio(SITE.streamUrl));
+  }, []);
+
+  const play = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      await audio?.play();
+      setIsPlaying(true);
+    } catch (e) {
+      console.error(e);
+    }
+    setIsLoading(false);
+  }, [audio]);
+
+  const pause = useCallback(() => {
+    audio?.pause();
+    setIsPlaying(false);
+  }, [audio]);
+
+  const toggleMute = useCallback(() => {
+    if (!audio) return;
+
+    audio.volume = isMuted ? 1 : 0;
+    setIsMuted((prev) => !prev);
+  }, [audio, isMuted]);
 
   return (
     <Card id="live" className={props.className}>
@@ -20,7 +48,7 @@ export const Player = (props: PlayerProps) => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={togglePlay}
+          onClick={isPlaying ? pause : play}
           className="cursor-pointer relative flex h-16 w-16 items-center justify-center rounded-full bg-accent text-background"
         >
           <AnimatePresence mode="wait">
