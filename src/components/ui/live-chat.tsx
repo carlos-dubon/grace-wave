@@ -76,7 +76,7 @@ export const LiveChat = (props: LiveChatProps) => {
   const [messages, setMessages] = useState<ChatMessage[]>(INITIAL_MESSAGES);
 
   return (
-    <Card className={cn("p-0", props.className)}>
+    <Card id="chat" className={cn("p-0", props.className)}>
       <div className="flex items-center gap-3 border-b border-border p-5">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20">
           <LuSmile className="h-5 w-5 text-accent" />

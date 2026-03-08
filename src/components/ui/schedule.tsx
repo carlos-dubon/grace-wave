@@ -24,7 +24,7 @@ const SCHEDULE: ShowSlot[] = [
 
 export const Schedule = () => {
   return (
-    <div className="flex flex-col gap-3">
+    <div id="schedule" className="flex flex-col gap-3 scroll-my-32">
       {SCHEDULE.map((slot) => (
         <div
           key={slot.time}

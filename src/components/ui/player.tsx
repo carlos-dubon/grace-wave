@@ -15,7 +15,7 @@ export const Player = (props: PlayerProps) => {
   const toggleMute = () => setIsMuted((prev) => !prev);
 
   return (
-    <Card className={props.className}>
+    <Card id="live" className={props.className}>
       <div className="flex items-center gap-4">
         <motion.button
           whileHover={{ scale: 1.05 }}

@@ -2,6 +2,7 @@ import { cn } from "@/lib/cn";
 import type { ReactNode } from "react";
 
 interface CardProps {
+  id?: string;
   className?: string;
   children: ReactNode;
 }
@@ -9,8 +10,9 @@ interface CardProps {
 export const Card = (props: CardProps) => {
   return (
     <div
+      id={props.id}
       className={cn(
-        "flex flex-col bg-background/40 rounded-xl border border-border p-5 backdrop-blur-sm",
+        "flex flex-col bg-background/40 rounded-xl border border-border p-5 backdrop-blur-sm scroll-my-32",
         props.className,
       )}
     >
