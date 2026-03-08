@@ -1,7 +1,7 @@
 import { cn } from "@/lib/cn";
 import { Card } from "./card";
-import { LuSmile, LuUser } from "react-icons/lu";
-import { useState } from "react";
+import { LuSmile, LuUser, LuSend } from "react-icons/lu";
+import { useCallback, useState } from "react";
 
 interface ChatMessage {
   id: string;
@@ -73,10 +73,41 @@ interface LiveChatProps {
 }
 
 export const LiveChat = (props: LiveChatProps) => {
+  const username = "Listener321";
   const [messages, setMessages] = useState<ChatMessage[]>(INITIAL_MESSAGES);
+  const [newMessage, setNewMessage] = useState<string>("");
+
+  const sendMessage = useCallback(() => {
+    if (!newMessage.trim()) return;
+
+    const message: ChatMessage = {
+      id: Date.now().toString(),
+      username,
+      message: newMessage.trim(),
+      timestamp: new Date().toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      }),
+      isHost: false,
+    };
+
+    setMessages((prev) => [...prev, message]);
+    setNewMessage("");
+  }, [newMessage, username]);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    },
+    [sendMessage],
+  );
 
   return (
-    <Card id="chat" className={cn("p-0", props.className)}>
+    <Card id="chat" className={cn("p-0 max-w-4xl", props.className)}>
       <div className="flex items-center gap-3 border-b border-border p-5">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20">
           <LuSmile className="h-5 w-5 text-accent" />
@@ -109,9 +140,10 @@ export const LiveChat = (props: LiveChatProps) => {
                 <div className="flex min-w-0 flex-1 flex-col gap-1">
                   <div className="flex items-baseline gap-2">
                     <span
-                      className={`text-sm font-semibold ${
-                        msg.isHost ? "text-accent" : "text-foreground"
-                      }`}
+                      className={cn(
+                        "text-sm font-semibold",
+                        msg.isHost ? "text-accent" : "text-foreground",
+                      )}
                     >
                       {msg.username}
                       {msg.isHost && (
@@ -132,6 +164,37 @@ export const LiveChat = (props: LiveChatProps) => {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="border-t border-border p-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-border text-foreground/80">
+            <LuUser className="h-4 w-4" />
+          </div>
+          <div className="flex flex-1 items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5">
+            <input
+              type="text"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Type a message..."
+              className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+              aria-label="Chat message"
+            />
+            <button
+              onClick={sendMessage}
+              disabled={!newMessage.trim()}
+              className="cursor-pointer flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-background transition-all hover:bg-accent/90 disabled:opacity-40 disabled:cursor-not-allowed"
+              aria-label="Send message"
+            >
+              <LuSend className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+        <p className="mt-2 pl-11 text-xs text-muted-foreground">
+          Chatting as{" "}
+          <span className="font-medium text-foreground/80">{username}</span>
+        </p>
       </div>
     </Card>
   );
