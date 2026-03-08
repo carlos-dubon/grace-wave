@@ -10,11 +10,13 @@ import { Card } from "@/components/ui/card";
     <HeroBackground />
     <Header client:load />
 
-    <div class="relative z-20">
+    <div class="relative z-20 pt-17">
         <div
-            class="w-full max-w-7xl mx-auto px-4 lg:px-8 h-screen flex flex-col justify-center"
+            class="w-full max-w-7xl mx-auto px-4 lg:px-8 flex flex-col justify-center gap-16"
         >
-            <div class="grid sm:grid-cols-2 items-center gap-12">
+            <div
+                class="grid sm:grid-cols-2 items-center gap-12 pt-16 min-h-[75dvh]"
+            >
                 <div class="flex flex-col gap-4">
                     <div class="flex items-center gap-3">
                         <span class="relative flex h-3 w-3">
@@ -72,6 +74,21 @@ import { Card } from "@/components/ui/card";
                         </Card>
                     </div>
                 </div>
+            </div>
+            <div class="flex flex-col gap-3">
+                <h2
+                    class="font-space-grotesk text-3xl font-bold text-foreground md:text-4xl"
+                >
+                    <span class="text-balance"
+                        >Chat With The <span class="text-accent">Host</span
+                        ></span
+                    >
+                </h2>
+                <p class="max-w-xl text-muted-foreground">
+                    Join the live conversation. Share prayer requests, request
+                    worship songs, and fellowship with other listeners in real
+                    time.
+                </p>
             </div>
         </div>
     </div>
