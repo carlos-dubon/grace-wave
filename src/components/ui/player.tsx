@@ -1,6 +1,12 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Card } from "./card";
-import { LuPause, LuPlay, LuVolumeX, LuVolume2 } from "react-icons/lu";
+import {
+  LuPause,
+  LuPlay,
+  LuVolumeX,
+  LuVolume2,
+  LuLoaderCircle,
+} from "react-icons/lu";
 import { AnimatePresence, motion } from "framer-motion";
 import { SITE } from "@/consts";
 
@@ -51,27 +57,31 @@ export const Player = (props: PlayerProps) => {
           onClick={isPlaying ? pause : play}
           className="cursor-pointer relative flex h-16 w-16 items-center justify-center rounded-full bg-accent text-background"
         >
-          <AnimatePresence mode="wait">
-            {isPlaying ? (
-              <motion.div
-                key="pause"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0 }}
-              >
-                <LuPause className="h-7 w-7" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="play"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0 }}
-              >
-                <LuPlay className="ml-1 h-7 w-7" />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {isLoading ? (
+            <LuLoaderCircle className="h-7 w-7 animate-spin" />
+          ) : (
+            <AnimatePresence mode="wait">
+              {isPlaying ? (
+                <motion.div
+                  key="pause"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                >
+                  <LuPause className="h-7 w-7" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="play"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                >
+                  <LuPlay className="ml-1 h-7 w-7" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          )}
         </motion.button>
 
         {/* Equalizer bars */}
