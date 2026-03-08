@@ -5,6 +5,7 @@ import { Header } from "@/components/ui/header";
 import { VerseOfTheDay } from "@/components/ui/verse-of-the-day";
 import { Card } from "@/components/ui/card";
 import { Player } from "@/components/ui/player";
+import { LiveChat } from "@/components/ui/live-chat";
 ---
 
 <Layout>
@@ -56,7 +57,7 @@ import { Player } from "@/components/ui/player";
                 <div class="flex-col flex gap-6">
                     <VerseOfTheDay client:load />
                     <div class="grid grid-cols-2 gap-4">
-                        <Card>
+                        <Card className="gap-1">
                             <span
                                 class="font-mono text-2xl font-bold text-accent"
                                 >24/7</span
@@ -65,7 +66,7 @@ import { Player } from "@/components/ui/player";
                                 Always Broadcasting
                             </span>
                         </Card>
-                        <Card>
+                        <Card className="gap-1">
                             <span
                                 class="font-mono text-2xl font-bold text-accent"
                                 >12K+</span
@@ -77,20 +78,23 @@ import { Player } from "@/components/ui/player";
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col gap-3">
-                <h2
-                    class="font-space-grotesk text-3xl font-bold text-foreground md:text-4xl"
-                >
-                    <span class="text-balance"
-                        >Chat With The <span class="text-accent">Host</span
-                        ></span
+            <div class="flex flex-col gap-12">
+                <div class="flex flex-col gap-3">
+                    <h2
+                        class="font-space-grotesk text-3xl font-bold text-foreground md:text-4xl"
                     >
-                </h2>
-                <p class="max-w-xl text-muted-foreground">
-                    Join the live conversation. Share prayer requests, request
-                    worship songs, and fellowship with other listeners in real
-                    time.
-                </p>
+                        <span class="text-balance"
+                            >Chat With The <span class="text-accent">Host</span
+                            ></span
+                        >
+                    </h2>
+                    <p class="max-w-xl text-muted-foreground">
+                        Join the live conversation. Share prayer requests,
+                        request worship songs, and fellowship with other
+                        listeners in real time.
+                    </p>
+                </div>
+                <LiveChat client:load />
             </div>
         </div>
     </div>

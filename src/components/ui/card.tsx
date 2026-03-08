@@ -10,7 +10,7 @@ export const Card = (props: CardProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col bg-background/40 gap-1 rounded-xl border border-border p-5 backdrop-blur-sm",
+        "flex flex-col bg-background/40 rounded-xl border border-border p-5 backdrop-blur-sm",
         props.className,
       )}
     >

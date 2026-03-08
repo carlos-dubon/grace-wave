@@ -48,7 +48,7 @@ export const Player = (props: PlayerProps) => {
 
         {/* Equalizer bars */}
         <div className="flex items-end gap-1 h-8">
-          {[0, 0.2, 0.1, 0.3, 0.15, 0.1].map((delay, i) => (
+          {[0, 0.2, 0.1, 0.3, 0.15].map((delay, i) => (
             <div
               key={i}
               className={`w-1 rounded-full bg-accent transition-all ${isPlaying ? "animate-eq-bar" : "h-1"}`}
