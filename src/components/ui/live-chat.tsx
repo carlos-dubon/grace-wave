@@ -173,12 +173,12 @@ export const LiveChat = (props: LiveChatProps) => {
         </div>
       </div>
 
-      <div className="border-t border-border p-4">
+      <div className="border-t border-border p-5">
         <div className="flex items-center gap-3">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-border text-foreground/80">
             <LuUser className="h-4 w-4" />
           </div>
-          <div className="flex flex-1 items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5">
+          <div className="flex flex-1 items-center gap-2 rounded-xl border border-border bg-background pl-4 pr-2.5 py-2.5">
             <input
               type="text"
               value={newMessage}
