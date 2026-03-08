@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Card } from "./card";
 import {
   LuPause,
@@ -21,6 +21,8 @@ export const Player = (props: PlayerProps) => {
 
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
+  const hasLoadedOnce = useRef(false);
+
   useEffect(() => {
     setAudio(new Audio(SITE.streamUrl));
   }, []);
@@ -30,6 +32,7 @@ export const Player = (props: PlayerProps) => {
     try {
       await audio?.play();
       setIsPlaying(true);
+      hasLoadedOnce.current = true;
     } catch (e) {
       console.error(e);
     }
@@ -57,7 +60,7 @@ export const Player = (props: PlayerProps) => {
           onClick={isPlaying ? pause : play}
           className="cursor-pointer relative flex h-16 w-16 items-center justify-center rounded-full bg-accent text-background"
         >
-          {isLoading ? (
+          {isLoading && !hasLoadedOnce.current ? (
             <LuLoaderCircle className="h-7 w-7 animate-spin" />
           ) : (
             <AnimatePresence mode="wait">
