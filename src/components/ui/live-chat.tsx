@@ -1,7 +1,7 @@
 import { cn } from "@/lib/cn";
 import { Card } from "./card";
 import { LuSmile, LuUser, LuSend } from "react-icons/lu";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface ChatMessage {
   id: string;
@@ -77,6 +77,14 @@ export const LiveChat = (props: LiveChatProps) => {
   const [messages, setMessages] = useState<ChatMessage[]>(INITIAL_MESSAGES);
   const [newMessage, setNewMessage] = useState<string>("");
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   const sendMessage = useCallback(() => {
     if (!newMessage.trim()) return;
 
@@ -122,8 +130,7 @@ export const LiveChat = (props: LiveChatProps) => {
         </div>
       </div>
       <div className="p-5">
-        {/* TODO: use scrollable area */}
-        <div>
+        <div className="h-[420px] overflow-auto scroll-smooth" ref={scrollRef}>
           <div className="flex flex-col gap-4">
             {messages.map((msg) => (
               <div key={msg.id} className="flex gap-3">
