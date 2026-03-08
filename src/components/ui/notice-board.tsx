@@ -131,10 +131,10 @@ export const NoticeBoard = () => {
             </div>
           </div>
 
-          <button className="mt-2 flex items-center gap-2 text-sm font-medium text-accent transition-all group-hover:gap-3">
+          <span className="mt-2 flex items-center gap-2 text-sm font-medium text-accent transition-all group-hover:gap-3">
             Learn More
             <LuArrowRight className="h-4 w-4" />
-          </button>
+          </span>
         </a>
       ))}
     </div>
