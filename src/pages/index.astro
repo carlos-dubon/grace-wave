@@ -1,5 +1,78 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import HeroBackground from "@/components/HeroBackground.astro";
+import { Header } from "@/components/ui/header";
+import { VerseOfTheDay } from "@/components/ui/verse-of-the-day";
+import { Card } from "@/components/ui/card";
 ---
 
-<Layout> aaskdjas </Layout>
+<Layout>
+    <HeroBackground />
+    <Header client:load />
+
+    <div class="relative z-20">
+        <div
+            class="w-full max-w-7xl mx-auto px-4 lg:px-8 h-screen flex flex-col justify-center"
+        >
+            <div class="grid sm:grid-cols-2 items-center gap-12">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="relative flex h-3 w-3">
+                            <span
+                                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75"
+                            ></span>
+                            <span
+                                class="relative inline-flex h-3 w-3 rounded-full bg-red-500"
+                            ></span>
+                        </span>
+                        <span
+                            class="text-sm font-semibold uppercase tracking-widest text-red-500"
+                        >
+                            Live Now
+                        </span>
+                    </div>
+                    <h1
+                        class="font-space-grotesk text-5xl font-bold leading-tight tracking-tight text-foreground md:text-7xl"
+                    >
+                        <span class="text-balance"
+                            >Faith On The{" "}<span class="text-accent"
+                                >Airwaves</span
+                            ></span
+                        >
+                    </h1>
+                    <p
+                        class="max-w-lg text-lg leading-relaxed text-muted-foreground"
+                    >
+                        Tune in to Grace Wave Radio for uplifting worship music,
+                        inspiring messages, and a faith community that grows
+                        together. Chat with the host live and share your prayer
+                        requests.
+                    </p>
+                </div>
+                <div class="flex-col flex gap-6">
+                    <VerseOfTheDay client:load />
+                    <div class="grid grid-cols-2 gap-4">
+                        <Card>
+                            <span
+                                class="font-mono text-2xl font-bold text-accent"
+                                >24/7</span
+                            >
+                            <span class="text-xs text-muted-foreground">
+                                Always Broadcasting
+                            </span>
+                        </Card>
+                        <Card>
+                            <span
+                                class="font-mono text-2xl font-bold text-accent"
+                                >12K+</span
+                            >
+                            <span class="text-xs text-muted-foreground">
+                                Faithful Listeners
+                            </span>
+                        </Card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

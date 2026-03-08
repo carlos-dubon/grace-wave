@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "public/static/hero.jpg";
+---
+
+<div class="absolute h-screen w-full">
+    <Image
+        src={heroImage}
+        alt="hero"
+        class="w-full h-full object-cover"
+        priority
+    />
+    <div class="absolute inset-0 bg-background/85"></div>
+    <div
+        class="absolute inset-0 bg-linear-to-t from-background via-background/50 to-transparent"
+    >
+    </div>
+</div>
