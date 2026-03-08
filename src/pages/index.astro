@@ -4,6 +4,7 @@ import HeroBackground from "@/components/HeroBackground.astro";
 import { Header } from "@/components/ui/header";
 import { VerseOfTheDay } from "@/components/ui/verse-of-the-day";
 import { Card } from "@/components/ui/card";
+import { Player } from "@/components/ui/player";
 ---
 
 <Layout>
@@ -50,6 +51,7 @@ import { Card } from "@/components/ui/card";
                         together. Chat with the host live and share your prayer
                         requests.
                     </p>
+                    <Player client:load />
                 </div>
                 <div class="flex-col flex gap-6">
                     <VerseOfTheDay client:load />
