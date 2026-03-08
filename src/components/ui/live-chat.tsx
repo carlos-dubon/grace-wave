@@ -115,7 +115,7 @@ export const LiveChat = (props: LiveChatProps) => {
                     >
                       {msg.username}
                       {msg.isHost && (
-                        <span className="ml-1.5 inline-flex items-center rounded bg-accent/20 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
+                        <span className="ml-1.5 inline-flex items-center rounded bg-accent/20 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent">
                           Host
                         </span>
                       )}

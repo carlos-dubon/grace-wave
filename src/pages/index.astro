@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Player } from "@/components/ui/player";
 import { LiveChat } from "@/components/ui/live-chat";
 import { NoticeBoard } from "@/components/ui/notice-board";
+import { Schedule } from "@/components/ui/schedule";
 ---
 
 <Layout>
@@ -114,6 +115,23 @@ import { NoticeBoard } from "@/components/ui/notice-board";
                     </p>
                 </div>
                 <NoticeBoard client:load />
+            </div>
+
+            <div class="flex flex-col gap-12">
+                <div class="flex flex-col gap-3">
+                    <h2
+                        class="font-space-grotesk text-balance text-3xl font-bold text-foreground md:text-4xl"
+                    >
+                        <span>
+                            Today's <span class="text-accent">Schedule</span>
+                        </span>
+                    </h2>
+                    <p class="max-w-xl text-muted-foreground">
+                        See what's playing throughout the day. Never miss your
+                        favorite show.
+                    </p>
+                </div>
+                <Schedule client:load />
             </div>
         </div>
     </div>
