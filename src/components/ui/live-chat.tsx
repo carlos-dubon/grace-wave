@@ -129,47 +129,48 @@ export const LiveChat = (props: LiveChatProps) => {
           </p>
         </div>
       </div>
-      <div className="p-5">
-        <div className="h-[420px] overflow-auto scroll-smooth" ref={scrollRef}>
-          <div className="flex flex-col gap-4">
-            {messages.map((msg) => (
-              <div key={msg.id} className="flex gap-3">
-                <div
-                  className={cn(
-                    "flex h-8 w-8 shrink-0 items-center justify-center rounded-full",
-                    msg.isHost
-                      ? "bg-accent text-background"
-                      : "bg-border text-foreground/80",
-                  )}
-                >
-                  <LuUser className="h-4 w-4" />
-                </div>
-                <div className="flex min-w-0 flex-1 flex-col gap-1">
-                  <div className="flex items-baseline gap-2">
-                    <span
-                      className={cn(
-                        "text-sm font-semibold",
-                        msg.isHost ? "text-accent" : "text-foreground",
-                      )}
-                    >
-                      {msg.username}
-                      {msg.isHost && (
-                        <span className="ml-1.5 inline-flex items-center rounded bg-accent/20 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent">
-                          Host
-                        </span>
-                      )}
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      {msg.timestamp}
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed text-foreground/80">
-                    {msg.message}
-                  </p>
-                </div>
+      <div
+        className="h-[420px] overflow-auto scroll-smooth p-5"
+        ref={scrollRef}
+      >
+        <div className="flex flex-col gap-4">
+          {messages.map((msg) => (
+            <div key={msg.id} className="flex gap-3">
+              <div
+                className={cn(
+                  "flex h-8 w-8 shrink-0 items-center justify-center rounded-full",
+                  msg.isHost
+                    ? "bg-accent text-background"
+                    : "bg-border text-foreground/80",
+                )}
+              >
+                <LuUser className="h-4 w-4" />
               </div>
-            ))}
-          </div>
+              <div className="flex min-w-0 flex-1 flex-col gap-1">
+                <div className="flex items-baseline gap-2">
+                  <span
+                    className={cn(
+                      "text-sm font-semibold",
+                      msg.isHost ? "text-accent" : "text-foreground",
+                    )}
+                  >
+                    {msg.username}
+                    {msg.isHost && (
+                      <span className="ml-1.5 inline-flex items-center rounded bg-accent/20 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent">
+                        Host
+                      </span>
+                    )}
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {msg.timestamp}
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  {msg.message}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
