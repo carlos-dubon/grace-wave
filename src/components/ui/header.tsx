@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { LuRadio, LuMenu, LuX } from "react-icons/lu";
 import { OnAir } from "./on-air";
-import { SITE } from "@/consts";
 
 interface NavLink {
   label: string;
@@ -38,7 +37,7 @@ export const Header = () => {
             <LuRadio className="h-5 w-5 text-background" />
           </div>
           <span className="text-xl font-bold tracking-tight text-foreground font-space-grotesk">
-            {SITE.title}
+            Grace<span className="text-accent">Wave</span>
           </span>
         </a>
 

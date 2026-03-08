@@ -95,16 +95,14 @@ export const LiveChat = (props: LiveChatProps) => {
         <div>
           <div className="flex flex-col gap-4">
             {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`flex gap-3 ${msg.isHost ? "" : ""}`}
-              >
+              <div key={msg.id} className="flex gap-3">
                 <div
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
+                  className={cn(
+                    "flex h-8 w-8 shrink-0 items-center justify-center rounded-full",
                     msg.isHost
                       ? "bg-accent text-background"
-                      : "bg-border text-foreground/80"
-                  }`}
+                      : "bg-border text-foreground/80",
+                  )}
                 >
                   <LuUser className="h-4 w-4" />
                 </div>
