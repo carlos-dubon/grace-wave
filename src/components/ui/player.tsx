@@ -55,6 +55,7 @@ export const Player = (props: PlayerProps) => {
     <Card id="live" className={props.className}>
       <div className="flex items-center gap-4">
         <motion.button
+          aria-label={isPlaying ? "Pause" : "Play"}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={isPlaying ? pause : play}
@@ -106,6 +107,7 @@ export const Player = (props: PlayerProps) => {
         </div>
 
         <button
+          aria-label={isMuted ? "Unmute" : "Mute"}
           onClick={toggleMute}
           className="cursor-pointer ml-2 text-muted-foreground hover:text-foreground transition-colors"
         >
