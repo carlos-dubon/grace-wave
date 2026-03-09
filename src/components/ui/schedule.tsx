@@ -37,7 +37,7 @@ export const Schedule = () => {
         >
           <span
             className={cn(
-              "w-16 shrink-0 font-mono text-sm font-bold",
+              "w-16 shrink-0 font-space-grotesk text-sm font-bold",
               slot.active ? "text-accent" : "text-muted-foreground",
             )}
           >
