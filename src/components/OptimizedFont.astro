@@ -1,0 +1,9 @@
+---
+const { href } = Astro.props;
+---
+
+<link as="style" href={href} rel="preload" />
+<link href={href} rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript>
+    <link rel="stylesheet" href={href} />
+</noscript>
