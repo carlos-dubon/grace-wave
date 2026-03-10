@@ -33,9 +33,9 @@ export const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h4 className="font-space-grotesk text-sm font-bold uppercase tracking-wider text-foreground">
+            <div className="font-space-grotesk text-sm font-bold uppercase tracking-wider text-foreground">
               Quick Links
-            </h4>
+            </div>
             <nav className="flex flex-col gap-2" aria-label="Footer navigation">
               {FOOTER_LINKS.map((link) => (
                 <a
@@ -50,9 +50,9 @@ export const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h4 className="font-space-grotesk text-sm font-bold uppercase tracking-wider text-foreground">
+            <div className="font-space-grotesk text-sm font-bold uppercase tracking-wider text-foreground">
               Connect
-            </h4>
+            </div>
             <div className="flex flex-col gap-2">
               <span className="text-sm text-muted-foreground">
                 listen@gracewave.fm
