@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "grace-wave",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,6 +7,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
+  },
+  "license": "MIT",
+  "author": "carlos-dubon",
+  "repository": {
+    "url": "https://github.com/carlos-dubon/grace-wave"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
